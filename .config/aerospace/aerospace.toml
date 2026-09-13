@@ -15,12 +15,12 @@ accordion-padding = 30
 automatically-unhide-macos-hidden-apps = true
 
 # The display's 32pt safe area contains the notch and native menu bar.
-gaps.inner.horizontal = 8
-gaps.inner.vertical = 8
-gaps.outer.left = 4
-gaps.outer.bottom = 4
-gaps.outer.top = 8
-gaps.outer.right = 4
+gaps.inner.horizontal = 4
+gaps.inner.vertical = 4
+gaps.outer.left = 2
+gaps.outer.bottom = 2
+gaps.outer.top = 2
+gaps.outer.right = 2
 
 # Raycast should remain an overlay instead of becoming a tiled window.
 [[on-window-detected]]

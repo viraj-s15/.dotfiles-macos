@@ -30,6 +30,25 @@ gaps.outer.right = 2
 if.app-id = 'com.raycast.macos'
 run = 'layout floating'
 
+# Keep Finder windows floating (a web modal's "choose file" spawns a real Finder
+# window, which must not steal a tile).
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+# Sandboxed apps (Safari, Mail) host the open/save panel in this XPC process.
+[[on-window-detected]]
+if.app-id = 'com.apple.appkit.xpc.openAndSavePanelService'
+run = 'layout floating'
+
+# Zen/Firefox draws its file picker as an in-process window with a BLANK title.
+# Without this it matches only the catch-all rule below and gets tiled, splitting
+# the workspace for as long as the picker is open.
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+if.window-title-regex-substring = '^$'
+run = 'layout floating'
+
 # Every other detected window is tiled, and its workspace cannot remain stacked.
 [[on-window-detected]]
 if = 'true'

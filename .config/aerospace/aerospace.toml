@@ -14,6 +14,9 @@ default-root-container-orientation = 'auto'
 accordion-padding = 30
 automatically-unhide-macos-hidden-apps = true
 
+# Focus follows mouse: hover over a window to focus it
+focus-follows-mouse.enabled = true
+
 # The display's 32pt safe area contains the notch and native menu bar.
 gaps.inner.horizontal = 4
 gaps.inner.vertical = 4

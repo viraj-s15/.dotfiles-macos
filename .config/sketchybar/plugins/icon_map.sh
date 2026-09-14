@@ -492,7 +492,7 @@ case $@ in
   icon_result=":reminders:"
   ;;
 "Preview" | "Skim" | "zathura")
-  icon_result=":pdf:"
+  icon_result=":preview:"
   ;;
 "1Password 7")
   icon_result=":one_password:"

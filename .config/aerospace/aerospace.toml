@@ -9,8 +9,8 @@ exec-on-workspace-change = ['/bin/bash', '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
-# Keep exactly ten named workspaces available.
-persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+# Keep exactly seven named workspaces available.
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7']
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -69,11 +69,11 @@ if = 'true'
 run = ['layout tiling', 'layout --root tiles']
 
 [mode.main.binding]
-# Cycle only through workspaces 1-10 and wrap at the ends.
-cmd-left  = 'echo -- 1 2 3 4 5 6 7 8 9 10 | workspace --stdin --wrap-around prev'
-cmd-right = 'echo -- 1 2 3 4 5 6 7 8 9 10 | workspace --stdin --wrap-around next'
+# Cycle only through workspaces 1-7 and wrap at the ends.
+cmd-left  = 'echo -- 1 2 3 4 5 6 7 | workspace --stdin --wrap-around prev'
+cmd-right = 'echo -- 1 2 3 4 5 6 7 | workspace --stdin --wrap-around next'
 
-# Jump directly to workspaces 1-10 (Command-0 selects workspace 10).
+# Jump directly to workspaces 1-7.
 cmd-1 = 'workspace 1'
 cmd-2 = 'workspace 2'
 cmd-3 = 'workspace 3'
@@ -81,11 +81,8 @@ cmd-4 = 'workspace 4'
 cmd-5 = 'workspace 5'
 cmd-6 = 'workspace 6'
 cmd-7 = 'workspace 7'
-cmd-8 = 'workspace 8'
-cmd-9 = 'workspace 9'
-cmd-0 = 'workspace 10'
 
-# Move the focused window directly to workspaces 1-10 and follow it.
+# Move the focused window directly to workspaces 1-7 and follow it.
 # Option is used here so macOS Command+Shift+3/4/5 screenshots still work.
 alt-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
 alt-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
@@ -94,13 +91,10 @@ alt-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
 alt-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
 alt-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
 alt-shift-7 = 'move-node-to-workspace --focus-follows-window 7'
-alt-shift-8 = 'move-node-to-workspace --focus-follows-window 8'
-alt-shift-9 = 'move-node-to-workspace --focus-follows-window 9'
-alt-shift-0 = 'move-node-to-workspace --focus-follows-window 10'
 
 # Move the focused window to an adjacent workspace and follow it.
-cmd-shift-left  = 'echo -- 1 2 3 4 5 6 7 8 9 10 | move-node-to-workspace --stdin --wrap-around --focus-follows-window prev'
-cmd-shift-right = 'echo -- 1 2 3 4 5 6 7 8 9 10 | move-node-to-workspace --stdin --wrap-around --focus-follows-window next'
+cmd-shift-left  = 'echo -- 1 2 3 4 5 6 7 | move-node-to-workspace --stdin --wrap-around --focus-follows-window prev'
+cmd-shift-right = 'echo -- 1 2 3 4 5 6 7 | move-node-to-workspace --stdin --wrap-around --focus-follows-window next'
 
 # Window focus and movement within a workspace.
 alt-left = 'focus left'

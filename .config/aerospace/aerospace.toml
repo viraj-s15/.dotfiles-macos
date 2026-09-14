@@ -56,6 +56,13 @@ if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = '^$'
 run = 'layout floating'
 
+# Mail creates a short-lived "Untitled" helper window while searching. Keep only
+# that helper floating so it cannot split or reset the main Mail window's layout.
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+if.window-title-regex-substring = '^Untitled$'
+run = 'layout floating'
+
 # Every other detected window is tiled, and its workspace cannot remain stacked.
 [[on-window-detected]]
 if = 'true'

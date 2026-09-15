@@ -4,7 +4,7 @@
 # persistent-workspaces in ~/.config/aerospace/aerospace.toml.
 sketchybar --add event aerospace_workspace_change
 
-for sid in 1 2 3 4 5 6 7; do
+for sid in 1 2 3 4 5; do
   space=(
     icon="$sid"
     icon.padding_left=13

@@ -12,7 +12,7 @@ PADDINGS=3 # All paddings use this value (icon, label, background)
 # Setting up the general bar appearance of the bar
 bar=(
   height=29
-  color=$BAR_COLOR
+  color=$TRANSPARENT
   shadow=off
   position=top
   sticky=on
@@ -21,8 +21,8 @@ bar=(
   corner_radius=9
   y_offset=3
   margin=10
-  blur_radius=20
-  notch_width=0
+  blur_radius=0
+  notch_width=200
 )
 
 sketchybar --bar "${bar[@]}"
@@ -66,6 +66,7 @@ source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/memory.sh"
 source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/bar_sections.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update

@@ -29,9 +29,9 @@ sketchybar --add item bar.notch_left q \
            --set bar.notch_left "${notch_anchor[@]}" \
            --add item bar.notch_right e \
            --set bar.notch_right "${notch_anchor[@]}" \
-           --add bracket bar.left apple.logo '/space\..*/' front_app bar.notch_left \
+           --add bracket bar.left apple.logo '/^space\..*/' separator aerospace.layout front_app bar.notch_left \
            --set bar.left "${section[@]}" background.padding_left=10 \
-           --add bracket bar.right bar.notch_right spotify.anchor memory cpu.percent volume_icon battery github.bell brew calendar \
+           --add bracket bar.right bar.notch_right spotify.anchor memory cpu.percent brightness.icon brightness volume_icon battery github.bell brew calendar \
            --set bar.right "${section[@]}" background.padding_right=10
 
 # Bracket backgrounds are drawn in creation order. Recreate the inner groups
@@ -39,15 +39,16 @@ sketchybar --add item bar.notch_left q \
 sketchybar --remove spaces
 sketchybar --remove status
 
-sketchybar --add bracket spaces '/space\..*/' \
+sketchybar --add bracket spaces '/^space\..*/' \
            --set spaces \
-             background.color=0xff3c3e4f \
-             background.border_width=0 \
+             background.color=$BACKGROUND_1 \
+             background.border_color=$BACKGROUND_2 \
+             background.border_width=2 \
              background.height=24 \
-             background.corner_radius=9 \
+             background.corner_radius=8 \
              background.drawing=on
 
-sketchybar --add bracket status brew github.bell battery volume_icon \
+sketchybar --add bracket status brew github.bell battery volume_icon brightness.icon \
            --set status \
              background.color=$BACKGROUND_1 \
              background.border_color=$BACKGROUND_2 \

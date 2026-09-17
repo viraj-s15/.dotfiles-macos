@@ -6,6 +6,15 @@ source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
 ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
+BRIGHTNESS_HELPER="$HOME/.config/sketchybar/helper/brightnessctl"
+BRIGHTNESS_SOURCE="$HOME/.config/sketchybar/helper/brightness.swift"
+if [ ! -x "$BRIGHTNESS_HELPER" ] || [ "$BRIGHTNESS_SOURCE" -nt "$BRIGHTNESS_HELPER" ]; then
+  swiftc -F /System/Library/PrivateFrameworks \
+         -framework DisplayServices \
+         "$BRIGHTNESS_SOURCE" \
+         -o "$BRIGHTNESS_HELPER"
+fi
+
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 PADDINGS=3 # All paddings use this value (icon, label, background)
 
@@ -30,7 +39,7 @@ sketchybar --bar "${bar[@]}"
 # Setting up default values
 defaults=(
   updates=when_shown
-  icon.font="$FONT:Bold:14.0"
+  icon.font="$FONT:Bold:15.0"
   icon.color=$ICON_COLOR
   icon.padding_left=$PADDINGS
   icon.padding_right=$PADDINGS
@@ -55,6 +64,7 @@ sketchybar --default "${defaults[@]}"
 # Left
 source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/aerospace.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Right
@@ -63,6 +73,7 @@ source "$ITEM_DIR/brew.sh"
 source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/brightness.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/memory.sh"
 source "$ITEM_DIR/spotify.sh"

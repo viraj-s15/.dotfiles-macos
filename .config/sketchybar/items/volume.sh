@@ -15,8 +15,8 @@ volume_slider=(
 
 volume_icon=(
   click_script="$PLUGIN_DIR/volume_click.sh"
-  padding_left=13
-  padding_right=0
+  padding_left=10
+  padding_right=6
   icon=$VOLUME_100
   icon.width=0
   icon.align=left

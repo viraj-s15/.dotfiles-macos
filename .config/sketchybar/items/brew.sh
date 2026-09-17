@@ -5,8 +5,10 @@
 
 brew=(
   icon=􀐛
+  icon.font="$FONT:Bold:14.0"
   label=?
-  padding_right=13
+  padding_left=6
+  padding_right=10
   script="$PLUGIN_DIR/brew.sh"
 )
 

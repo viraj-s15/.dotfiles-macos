@@ -136,7 +136,7 @@ case "$SENDER" in
   ;;
   "mouse.entered") popup on
   ;;
-  "mouse.exited"|"mouse.exited.global") popup off
+  "mouse.exited.global") popup off
   ;;
   "routine") routine
   ;;

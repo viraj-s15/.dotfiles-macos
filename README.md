@@ -29,9 +29,9 @@ Catppuccin SketchyBar islands, ten AeroSpace workspaces, and a small Fastfetch s
   ```sh
   git clone https://github.com/viraj-s15/.dotfiles-macos.git "$HOME/.dotfiles-macos"
   mkdir -p "$HOME/.config"
-  ln -s "$HOME/.dotfiles-macos/.config/aerospace" "$HOME/.config/aerospace"
-  ln -s "$HOME/.dotfiles-macos/.config/sketchybar" "$HOME/.config/sketchybar"
-  ln -s "$HOME/.dotfiles-macos/.config/fastfetch" "$HOME/.config/fastfetch"
+  ln -s "$HOME/.dotfiles-macos/aerospace" "$HOME/.config/aerospace"
+  ln -s "$HOME/.dotfiles-macos/sketchybar" "$HOME/.config/sketchybar"
+  ln -s "$HOME/.dotfiles-macos/fastfetch" "$HOME/.config/fastfetch"
   ```
 
 - Install the small helper used by the battery power-mode button:

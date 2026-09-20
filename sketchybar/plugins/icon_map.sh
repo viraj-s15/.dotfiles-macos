@@ -386,7 +386,7 @@ case $@ in
 "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Outlook")
   icon_result=":mail:"
   ;;
-"Safari" | "Safari Technology Preview")
+"Dia" | "Safari" | "Safari Technology Preview")
   icon_result=":safari:"
   ;;
 "Telegram")

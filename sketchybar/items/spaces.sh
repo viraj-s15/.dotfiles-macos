@@ -21,15 +21,19 @@ for sid in {1..10}; do
     background.height=22
     background.corner_radius=8
     background.color=$TRANSPARENT
-    background.drawing=on
-    script="$PLUGIN_DIR/space.sh $sid"
+    background.drawing=off
     click_script="aerospace workspace $sid"
   )
 
   sketchybar --add item "space.$sid" left \
-             --set "space.$sid" "${space[@]}" \
-             --subscribe "space.$sid" aerospace_workspace_change front_app_switched
+             --set "space.$sid" "${space[@]}"
 done
+
+sketchybar --set space.1 background.drawing=on background.color=$MAGENTA
+
+sketchybar --add item workspace.controller left \
+  --set workspace.controller drawing=off width=0 updates=on script="$PLUGIN_DIR/space.sh" \
+           --subscribe workspace.controller aerospace_workspace_change front_app_switched
 
 separator=(
   icon=􀆊

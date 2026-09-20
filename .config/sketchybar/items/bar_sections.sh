@@ -37,11 +37,7 @@ right_section_items=()
 [ "$ENABLE_VOLUME" = true ] && right_section_items+=(volume_icon)
 right_section_items+=(battery github.bell brew calendar)
 
-status_items=(brew github.bell battery)
-[ "$ENABLE_VOLUME" = true ] && status_items+=(volume_icon)
-[ "$ENABLE_BRIGHTNESS" = true ] && status_items+=(brightness.icon)
-
-left_section_items=(apple.logo '/^space\..*/')
+left_section_items=(apple.logo workspace.highlight '/^space\..*/')
 [ "$ENABLE_WORKSPACE_SEPARATOR" = true ] && left_section_items+=(separator)
 [ "$ENABLE_AEROSPACE_LAYOUT" = true ] && left_section_items+=(aerospace.layout)
 left_section_items+=(front_app)
@@ -54,14 +50,3 @@ sketchybar --add item bar.notch_left q \
            --set bar.left "${section[@]}" background.padding_left=10 \
            --add bracket bar.right "${right_section_items[@]}" \
            --set bar.right "${section[@]}" background.padding_right=10
-
-# Recreate the status group after the outer glass shell so it remains visible.
-sketchybar --remove status
-sketchybar --add bracket status "${status_items[@]}" \
-           --set status \
-             background.color=$BACKGROUND_1 \
-             background.border_color=$BACKGROUND_2 \
-             background.border_width=1 \
-             background.height=24 \
-             background.corner_radius=8 \
-             background.drawing=on

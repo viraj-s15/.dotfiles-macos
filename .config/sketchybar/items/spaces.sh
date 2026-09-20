@@ -4,22 +4,37 @@
 # persistent-workspaces in ~/.config/aerospace/aerospace.toml.
 sketchybar --add event aerospace_workspace_change
 
-for sid in 1 2 3 4 5 6; do
+workspace_highlight=(
+  width=28
+  padding_left=0
+  padding_right=0
+  icon.drawing=off
+  label.drawing=off
+  background.height=22
+  background.corner_radius=8
+  background.color=$MAGENTA
+  background.padding_left=0
+  background.padding_right=0
+  background.drawing=on
+)
+
+sketchybar --add item workspace.highlight left \
+           --set workspace.highlight "${workspace_highlight[@]}"
+
+for sid in {1..10}; do
   space=(
     icon="$sid"
     icon.font="$FONT:Bold:13.0"
     icon.padding_left=0
     icon.padding_right=0
     icon.align=center
+    icon.width=28
     icon.color=$GREY
     label.drawing=off
-    width=30
+    width=28
     padding_left=1
     padding_right=1
     y_offset=0
-    background.height=22
-    background.corner_radius=8
-    background.color=$MAGENTA
     background.drawing=off
     script="$PLUGIN_DIR/space.sh $sid"
     click_script="aerospace workspace $sid"

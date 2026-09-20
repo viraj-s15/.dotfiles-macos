@@ -24,7 +24,7 @@ ENABLE_BRIGHTNESS=false
 ENABLE_VOLUME=false
 ENABLE_AEROSPACE_LAYOUT=false
 ENABLE_WORKSPACE_SEPARATOR=true
-ENABLE_SYSTEM_METRICS=false
+ENABLE_SYSTEM_METRICS=true
 
 # Setting up the general bar appearance of the bar
 bar=(
@@ -38,7 +38,7 @@ bar=(
   corner_radius=10
   y_offset=3
   margin=10
-  blur_radius=28
+  blur_radius=0
   notch_width=280
 )
 

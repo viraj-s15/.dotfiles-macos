@@ -18,7 +18,7 @@ Catppuccin SketchyBar islands, ten AeroSpace workspaces, and a small Fastfetch s
   ```sh
   brew tap FelixKratz/formulae
   brew install sketchybar fastfetch
-  brew install --cask nikitabobko/tap/aerospace font-sf-pro sf-symbols
+  brew install --cask nikitabobko/tap/aerospace ghostty font-sf-pro sf-symbols
   mkdir -p "$HOME/Library/Fonts"
   curl -fsSL https://github.com/kvndrsslr/sketchybar-app-font/releases/latest/download/sketchybar-app-font.ttf \
     -o "$HOME/Library/Fonts/sketchybar-app-font.ttf"
@@ -32,6 +32,7 @@ Catppuccin SketchyBar islands, ten AeroSpace workspaces, and a small Fastfetch s
   ln -s "$HOME/.dotfiles-macos/aerospace" "$HOME/.config/aerospace"
   ln -s "$HOME/.dotfiles-macos/sketchybar" "$HOME/.config/sketchybar"
   ln -s "$HOME/.dotfiles-macos/fastfetch" "$HOME/.config/fastfetch"
+  ln -s "$HOME/.dotfiles-macos/ghostty" "$HOME/.config/ghostty"
   ```
 
 - Install the small helper used by the battery power-mode button:

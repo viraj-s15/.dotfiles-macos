@@ -25,6 +25,14 @@ ENABLE_VOLUME=false
 ENABLE_AEROSPACE_LAYOUT=false
 ENABLE_WORKSPACE_SEPARATOR=true
 ENABLE_SYSTEM_METRICS=true
+ENABLE_GITHUB=false
+ENABLE_NOTIFICATIONS=true
+
+NOTIFICATION_CENTER_HELPER="$HOME/.config/sketchybar/helper/notification-center"
+NOTIFICATION_CENTER_SOURCE="$HOME/.config/sketchybar/helper/notification-center.swift"
+if [ "$ENABLE_NOTIFICATIONS" = true ] && { [ ! -x "$NOTIFICATION_CENTER_HELPER" ] || [ "$NOTIFICATION_CENTER_SOURCE" -nt "$NOTIFICATION_CENTER_HELPER" ]; }; then
+  swiftc "$NOTIFICATION_CENTER_SOURCE" -o "$NOTIFICATION_CENTER_HELPER"
+fi
 
 # Setting up the general bar appearance of the bar
 bar=(
@@ -78,7 +86,8 @@ source "$ITEM_DIR/front_app.sh"
 # Right
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/brew.sh"
-source "$ITEM_DIR/github.sh"
+[ "$ENABLE_GITHUB" = true ] && source "$ITEM_DIR/github.sh"
+[ "$ENABLE_NOTIFICATIONS" = true ] && source "$ITEM_DIR/notifications.sh"
 source "$ITEM_DIR/battery.sh"
 [ "$ENABLE_VOLUME" = true ] && source "$ITEM_DIR/volume.sh"
 [ "$ENABLE_BRIGHTNESS" = true ] && source "$ITEM_DIR/brightness.sh"

@@ -2,20 +2,19 @@
 
 source "$HOME/.config/sketchybar/colors.sh"
 
-COUNT=$(brew outdated | wc -l | tr -d ' ')
+COUNT=$(/opt/homebrew/bin/brew outdated | wc -l | tr -d ' ')
 
-COLOR=$RED
+if [ "$COUNT" -eq 0 ]; then
+  sketchybar --set "$NAME" drawing=off
+  exit 0
+fi
 
-case "$COUNT" in
-  [3-5][0-9]) COLOR=$ORANGE
-  ;;
-  [1-2][0-9]) COLOR=$YELLOW
-  ;;
-  [1-9]) COLOR=$WHITE
-  ;;
-  0) COLOR=$GREEN
-     COUNT=􀆅
-  ;;
-esac
+if [ "$COUNT" -lt 10 ]; then
+  COLOR=$WHITE
+elif [ "$COUNT" -lt 30 ]; then
+  COLOR=$YELLOW
+else
+  COLOR=$ORANGE
+fi
 
-sketchybar --set $NAME label=$COUNT icon.color=$COLOR
+sketchybar --set "$NAME" drawing=on label="$COUNT" icon.color="$COLOR"

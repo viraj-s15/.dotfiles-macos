@@ -1,0 +1,3 @@
+veer ALL=(root) NOPASSWD: /usr/local/libexec/sketchybar-power-mode 0
+veer ALL=(root) NOPASSWD: /usr/local/libexec/sketchybar-power-mode 1
+veer ALL=(root) NOPASSWD: /usr/local/libexec/sketchybar-power-mode 2

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+case "${1:-}" in
+  0|1|2) exec /usr/bin/pmset -a powermode "$1" ;;
+  *)
+    echo "Usage: sketchybar-power-mode {0|1|2}" >&2
+    exit 64
+    ;;
+esac

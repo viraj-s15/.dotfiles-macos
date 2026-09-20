@@ -10,23 +10,28 @@ if [ -z "$PERCENTAGE" ]; then
   exit 0
 fi
 
-COLOR=$WHITE
 case ${PERCENTAGE} in
-  9[0-9]|100) ICON=$BATTERY_100; COLOR=$GREEN
+  9[0-9]|100) ICON=$BATTERY_100
   ;;
   [6-8][0-9]) ICON=$BATTERY_75
   ;;
   [3-5][0-9]) ICON=$BATTERY_50
   ;;
-  [1-2][0-9]) ICON=$BATTERY_25; COLOR=$ORANGE
+  [1-2][0-9]) ICON=$BATTERY_25
   ;;
-  *) ICON=$BATTERY_0; COLOR=$RED
+  *) ICON=$BATTERY_0
 esac
 
 if [[ $CHARGING != "" ]]; then
   ICON=$BATTERY_CHARGING
-  COLOR=$GREEN
 fi
+
+POWER_MODE=$(pmset -g | awk '/powermode/ { print $2; exit }')
+case "$POWER_MODE" in
+  1) COLOR=$YELLOW ;;
+  2) COLOR=$ORANGE ;;
+  *) COLOR=$WHITE ;;
+esac
 
 sketchybar --set "$NAME" drawing=on \
            icon="$ICON" icon.color="$COLOR" \

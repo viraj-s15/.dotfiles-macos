@@ -24,9 +24,7 @@ section=(
   background.border_color=$GLASS_BORDER_COLOR
   background.border_width=1
   background.drawing=on
-  background.shadow.drawing=on
-  background.shadow.color=0x40000000
-  background.shadow.distance=3
+  background.shadow.drawing=off
   blur_radius=28
 )
 
@@ -35,7 +33,10 @@ right_section_items=()
 [ "$ENABLE_SYSTEM_METRICS" = true ] && right_section_items+=(memory cpu.percent)
 [ "$ENABLE_BRIGHTNESS" = true ] && right_section_items+=(brightness.icon brightness)
 [ "$ENABLE_VOLUME" = true ] && right_section_items+=(volume_icon)
-right_section_items+=(battery github.bell brew calendar)
+right_section_items+=(battery)
+[ "$ENABLE_GITHUB" = true ] && right_section_items+=(github.bell)
+[ "$ENABLE_NOTIFICATIONS" = true ] && right_section_items+=(notifications)
+right_section_items+=(brew calendar)
 
 left_section_items=(apple.logo workspace.highlight '/^space\..*/')
 [ "$ENABLE_WORKSPACE_SEPARATOR" = true ] && left_section_items+=(separator)

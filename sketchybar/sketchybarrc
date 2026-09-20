@@ -27,6 +27,7 @@ ENABLE_WORKSPACE_SEPARATOR=true
 ENABLE_SYSTEM_METRICS=true
 ENABLE_GITHUB=false
 ENABLE_NOTIFICATIONS=true
+ENABLE_FOCUS=true
 
 NOTIFICATION_CENTER_HELPER="$HOME/.config/sketchybar/helper/notification-center"
 NOTIFICATION_CENTER_SOURCE="$HOME/.config/sketchybar/helper/notification-center.swift"
@@ -86,6 +87,7 @@ source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/brew.sh"
 [ "$ENABLE_GITHUB" = true ] && source "$ITEM_DIR/github.sh"
 [ "$ENABLE_NOTIFICATIONS" = true ] && source "$ITEM_DIR/notifications.sh"
+[ "$ENABLE_FOCUS" = true ] && source "$ITEM_DIR/focus.sh"
 source "$ITEM_DIR/battery.sh"
 [ "$ENABLE_VOLUME" = true ] && source "$ITEM_DIR/volume.sh"
 [ "$ENABLE_BRIGHTNESS" = true ] && source "$ITEM_DIR/brightness.sh"

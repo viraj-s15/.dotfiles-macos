@@ -21,7 +21,6 @@ section=(
   background.color=$BAR_COLOR
   background.height=29
   background.corner_radius=10
-  background.border_color=$GLASS_BORDER_COLOR
   background.border_width=0
   background.drawing=on
   background.shadow.drawing=off
@@ -36,6 +35,7 @@ right_section_items=()
 right_section_items+=(battery)
 [ "$ENABLE_GITHUB" = true ] && right_section_items+=(github.bell)
 [ "$ENABLE_NOTIFICATIONS" = true ] && right_section_items+=(notifications)
+[ "$ENABLE_FOCUS" = true ] && right_section_items+=(focus.mode)
 right_section_items+=(brew calendar)
 
 left_section_items=(apple.logo workspace.highlight '/^space\..*/')

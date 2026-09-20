@@ -23,6 +23,8 @@ ENABLE_SPOTIFY=false
 ENABLE_BRIGHTNESS=false
 ENABLE_VOLUME=false
 ENABLE_AEROSPACE_LAYOUT=false
+ENABLE_WORKSPACE_SEPARATOR=false
+ENABLE_SYSTEM_METRICS=false
 
 # Setting up the general bar appearance of the bar
 bar=(
@@ -33,10 +35,10 @@ bar=(
   sticky=on
   padding_right=10
   padding_left=10
-  corner_radius=9
+  corner_radius=10
   y_offset=3
   margin=10
-  blur_radius=0
+  blur_radius=28
   notch_width=280
 )
 
@@ -80,8 +82,8 @@ source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/battery.sh"
 [ "$ENABLE_VOLUME" = true ] && source "$ITEM_DIR/volume.sh"
 [ "$ENABLE_BRIGHTNESS" = true ] && source "$ITEM_DIR/brightness.sh"
-source "$ITEM_DIR/cpu.sh"
-source "$ITEM_DIR/memory.sh"
+[ "$ENABLE_SYSTEM_METRICS" = true ] && source "$ITEM_DIR/cpu.sh"
+[ "$ENABLE_SYSTEM_METRICS" = true ] && source "$ITEM_DIR/memory.sh"
 [ "$ENABLE_SPOTIFY" = true ] && source "$ITEM_DIR/spotify.sh"
 source "$ITEM_DIR/bar_sections.sh"
 

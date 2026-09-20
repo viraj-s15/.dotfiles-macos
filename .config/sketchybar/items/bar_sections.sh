@@ -20,14 +20,19 @@ notch_anchor=(
 section=(
   background.color=$BAR_COLOR
   background.height=29
-  background.corner_radius=9
+  background.corner_radius=10
+  background.border_color=$GLASS_BORDER_COLOR
+  background.border_width=1
   background.drawing=on
-  blur_radius=20
+  background.shadow.drawing=on
+  background.shadow.color=0x40000000
+  background.shadow.distance=3
+  blur_radius=28
 )
 
 right_section_items=()
 [ "$ENABLE_SPOTIFY" = true ] && right_section_items+=(spotify.anchor)
-right_section_items+=(memory cpu.percent)
+[ "$ENABLE_SYSTEM_METRICS" = true ] && right_section_items+=(memory cpu.percent)
 [ "$ENABLE_BRIGHTNESS" = true ] && right_section_items+=(brightness.icon brightness)
 [ "$ENABLE_VOLUME" = true ] && right_section_items+=(volume_icon)
 right_section_items+=(battery github.bell brew calendar)
@@ -36,7 +41,8 @@ status_items=(brew github.bell battery)
 [ "$ENABLE_VOLUME" = true ] && status_items+=(volume_icon)
 [ "$ENABLE_BRIGHTNESS" = true ] && status_items+=(brightness.icon)
 
-left_section_items=(apple.logo '/^space\..*/' separator)
+left_section_items=(apple.logo '/^space\..*/')
+[ "$ENABLE_WORKSPACE_SEPARATOR" = true ] && left_section_items+=(separator)
 [ "$ENABLE_AEROSPACE_LAYOUT" = true ] && left_section_items+=(aerospace.layout)
 left_section_items+=(front_app)
 
@@ -49,25 +55,13 @@ sketchybar --add item bar.notch_left q \
            --add bracket bar.right "${right_section_items[@]}" \
            --set bar.right "${section[@]}" background.padding_right=10
 
-# Bracket backgrounds are drawn in creation order. Recreate the inner groups
-# after the section backgrounds so their visual hierarchy remains visible.
-sketchybar --remove spaces
+# Recreate the status group after the outer glass shell so it remains visible.
 sketchybar --remove status
-
-sketchybar --add bracket spaces '/^space\..*/' \
-           --set spaces \
-             background.color=$BACKGROUND_1 \
-             background.border_color=$BACKGROUND_2 \
-             background.border_width=2 \
-             background.height=24 \
-             background.corner_radius=8 \
-             background.drawing=on
-
 sketchybar --add bracket status "${status_items[@]}" \
            --set status \
              background.color=$BACKGROUND_1 \
              background.border_color=$BACKGROUND_2 \
-             background.border_width=2 \
+             background.border_width=1 \
              background.height=24 \
-             background.corner_radius=9 \
+             background.corner_radius=8 \
              background.drawing=on

@@ -10,9 +10,10 @@ for sid in 1 2 3 4 5 6; do
     icon.font="$FONT:Bold:13.0"
     icon.padding_left=0
     icon.padding_right=0
+    icon.align=center
     icon.color=$GREY
     label.drawing=off
-    width=35
+    width=30
     padding_left=1
     padding_right=1
     y_offset=0

@@ -18,8 +18,13 @@ fi
 FONT="SF Pro"
 PADDINGS=3
 
+add_gap() {
+  sketchybar --add item "$1" "$2" \
+             --set "$1" icon.drawing=off label.drawing=off width=10 padding_left=0 padding_right=0
+}
+
 # Optional widgets. Change any value to true and reload SketchyBar to restore it.
-ENABLE_SPOTIFY=false
+ENABLE_SPOTIFY=true
 ENABLE_BRIGHTNESS=false
 ENABLE_VOLUME=false
 ENABLE_AEROSPACE_LAYOUT=false
@@ -33,6 +38,12 @@ NOTIFICATION_CENTER_HELPER="$HOME/.config/sketchybar/helper/notification-center"
 NOTIFICATION_CENTER_SOURCE="$HOME/.config/sketchybar/helper/notification-center.swift"
 if [ "$ENABLE_NOTIFICATIONS" = true ] && { [ ! -x "$NOTIFICATION_CENTER_HELPER" ] || [ "$NOTIFICATION_CENTER_SOURCE" -nt "$NOTIFICATION_CENTER_HELPER" ]; }; then
   swiftc "$NOTIFICATION_CENTER_SOURCE" -o "$NOTIFICATION_CENTER_HELPER"
+fi
+
+PRIVACY_HELPER="$HOME/.config/sketchybar/helper/privacy-status"
+PRIVACY_SOURCE="$HOME/.config/sketchybar/helper/privacy-status.c"
+if [ ! -x "$PRIVACY_HELPER" ] || [ "$PRIVACY_SOURCE" -nt "$PRIVACY_HELPER" ]; then
+  clang -framework CoreAudio -framework CoreMediaIO "$PRIVACY_SOURCE" -o "$PRIVACY_HELPER"
 fi
 
 bar=(
@@ -78,22 +89,29 @@ sketchybar --default "${defaults[@]}"
 
 # Left
 source "$ITEM_DIR/apple.sh"
+add_gap gap_apple_workspace left
 source "$ITEM_DIR/spaces.sh"
 [ "$ENABLE_AEROSPACE_LAYOUT" = true ] && source "$ITEM_DIR/aerospace.sh"
 source "$ITEM_DIR/front_app.sh"
+add_gap gap_app_media left
+source "$ITEM_DIR/now_playing.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
+add_gap gap_clock_system right
 source "$ITEM_DIR/brew.sh"
 [ "$ENABLE_GITHUB" = true ] && source "$ITEM_DIR/github.sh"
 [ "$ENABLE_NOTIFICATIONS" = true ] && source "$ITEM_DIR/notifications.sh"
 [ "$ENABLE_FOCUS" = true ] && source "$ITEM_DIR/focus.sh"
 source "$ITEM_DIR/battery.sh"
+add_gap gap_system_privacy right
+source "$ITEM_DIR/privacy.sh"
+add_gap gap_privacy_spotify right
+[ "$ENABLE_SPOTIFY" = true ] && source "$ITEM_DIR/spotify.sh"
+add_gap gap_spotify_metrics right
 [ "$ENABLE_VOLUME" = true ] && source "$ITEM_DIR/volume.sh"
 [ "$ENABLE_BRIGHTNESS" = true ] && source "$ITEM_DIR/brightness.sh"
-[ "$ENABLE_SYSTEM_METRICS" = true ] && source "$ITEM_DIR/cpu.sh"
-[ "$ENABLE_SYSTEM_METRICS" = true ] && source "$ITEM_DIR/memory.sh"
-[ "$ENABLE_SPOTIFY" = true ] && source "$ITEM_DIR/spotify.sh"
+[ "$ENABLE_SYSTEM_METRICS" = true ] && source "$ITEM_DIR/metrics.sh"
 source "$ITEM_DIR/bar_sections.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)

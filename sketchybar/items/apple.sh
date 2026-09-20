@@ -7,9 +7,8 @@ apple_logo=(
   icon=$APPLE
   icon.font="$FONT:Black:16.0"
   icon.color=$BLUE
-  padding_left=11
-  # Compensates for the overlaid 28pt workspace highlight item.
-  padding_right=-13
+  padding_left=8
+  padding_right=8
   label.drawing=off
   click_script="$POPUP_CLICK_SCRIPT"
 )

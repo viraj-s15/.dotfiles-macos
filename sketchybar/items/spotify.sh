@@ -1,22 +1,23 @@
 #!/bin/bash
 
 SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
-POPUP_SCRIPT="sketchybar -m --set spotify.anchor popup.drawing=toggle"
+POPUP_SCRIPT="sketchybar -m --set spotify_anchor popup.drawing=toggle"
 
 spotify_anchor=(
-  script="$PLUGIN_DIR/spotify.sh"
-  click_script="$POPUP_SCRIPT"
   popup.horizontal=on
   popup.align=center
   popup.height=150
-  icon=:spotify:
+  popup.y_offset=4
+  icon=":spotify:"
   icon.font="sketchybar-app-font:Regular:16.0"
   icon.color=$GREEN
+  icon.padding_left=7
+  icon.padding_right=7
   label.drawing=off
-  padding_left=8
-  padding_right=8
-  drawing=on
-  y_offset=0
+  width=34
+  padding_left=0
+  padding_right=0
+  click_script="$PLUGIN_DIR/spotify.sh anchor"
 )
 
 spotify_cover=(
@@ -149,48 +150,45 @@ spotify_controls=(
 )
 
 sketchybar --add event spotify_change $SPOTIFY_EVENT             \
-           --add item spotify.anchor right                       \
-           --set spotify.anchor "${spotify_anchor[@]}"           \
-           --subscribe spotify.anchor mouse.entered             \
-                                      mouse.exited.global        \
-                                                                 \
-           --add item spotify.cover popup.spotify.anchor         \
+           --add item spotify_anchor right                       \
+           --set spotify_anchor "${spotify_anchor[@]}"           \
+           --add item spotify.cover popup.spotify_anchor         \
            --set spotify.cover "${spotify_cover[@]}"             \
                                                                  \
-           --add item spotify.title popup.spotify.anchor         \
+           --add item spotify.title popup.spotify_anchor         \
            --set spotify.title "${spotify_title[@]}"             \
                                                                  \
-           --add item spotify.artist popup.spotify.anchor        \
+           --add item spotify.artist popup.spotify_anchor         \
            --set spotify.artist "${spotify_artist[@]}"           \
                                                                  \
-           --add item spotify.album popup.spotify.anchor         \
+           --add item spotify.album popup.spotify_anchor         \
            --set spotify.album "${spotify_album[@]}"             \
                                                                  \
-           --add slider spotify.state popup.spotify.anchor       \
+           --add slider spotify.state popup.spotify_anchor        \
            --set spotify.state "${spotify_state[@]}"             \
            --subscribe spotify.state mouse.clicked               \
                                                                  \
-           --add item spotify.shuffle popup.spotify.anchor       \
+           --add item spotify.shuffle popup.spotify_anchor        \
            --set spotify.shuffle "${spotify_shuffle[@]}"         \
            --subscribe spotify.shuffle mouse.clicked             \
                                                                  \
-           --add item spotify.back popup.spotify.anchor          \
+           --add item spotify.back popup.spotify_anchor           \
            --set spotify.back "${spotify_back[@]}"               \
            --subscribe spotify.back mouse.clicked                \
                                                                  \
-           --add item spotify.play popup.spotify.anchor          \
+           --add item spotify.play popup.spotify_anchor           \
            --set spotify.play "${spotify_play[@]}"               \
            --subscribe spotify.play mouse.clicked spotify_change \
                                                                  \
-           --add item spotify.next popup.spotify.anchor          \
+           --add item spotify.next popup.spotify_anchor           \
            --set spotify.next "${spotify_next[@]}"               \
            --subscribe spotify.next mouse.clicked                \
                                                                  \
-           --add item spotify.repeat popup.spotify.anchor        \
+           --add item spotify.repeat popup.spotify_anchor         \
            --set spotify.repeat "${spotify_repeat[@]}"           \
            --subscribe spotify.repeat  mouse.clicked             \
                                                                  \
-           --add item spotify.spacer popup.spotify.anchor        \
+           --add item spotify.spacer popup.spotify_anchor         \
            --set spotify.spacer width=5                          \
                                                                  \
            --add bracket spotify.controls spotify.shuffle        \
@@ -198,4 +196,4 @@ sketchybar --add event spotify_change $SPOTIFY_EVENT             \
                                           spotify.play           \
                                           spotify.next           \
                                           spotify.repeat         \
-           --set spotify.controls "${spotify_controls[@]}"       \
+           --set spotify.controls "${spotify_controls[@]}"

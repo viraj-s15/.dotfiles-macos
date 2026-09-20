@@ -41,20 +41,16 @@ shuffle ()
 
 update ()
 {
-  PLAYING=1
-  if [ "$(echo "$INFO" | jq -r '.["Player State"]')" = "Playing" ]; then
-    PLAYING=0
-    TRACK="$(echo "$INFO" | jq -r .Name | sed 's/\(.\{20\}\).*/\1.../')"
-    ARTIST="$(echo "$INFO" | jq -r .Artist | sed 's/\(.\{20\}\).*/\1.../')"
-    ALBUM="$(echo "$INFO" | jq -r .Album | sed 's/\(.\{25\}\).*/\1.../')"
+  PLAYER_STATE="$(osascript -e 'tell application "Spotify" to get player state as string' 2>/dev/null)"
+  if [ "$PLAYER_STATE" = "playing" ] || [ "$PLAYER_STATE" = "paused" ]; then
+    TRACK="$(osascript -e 'tell application "Spotify" to get name of current track' 2>/dev/null | sed 's/\(.\{24\}\).*/\1.../')"
+    ARTIST="$(osascript -e 'tell application "Spotify" to get artist of current track' 2>/dev/null | sed 's/\(.\{24\}\).*/\1.../')"
+    ALBUM="$(osascript -e 'tell application "Spotify" to get album of current track' 2>/dev/null | sed 's/\(.\{28\}\).*/\1.../')"
     SHUFFLE=$(osascript -e 'tell application "Spotify" to get shuffling')
     REPEAT=$(osascript -e 'tell application "Spotify" to get repeating')
     COVER=$(osascript -e 'tell application "Spotify" to get artwork url of current track')
-  fi
-
-  args=()
-  if [ $PLAYING -eq 0 ]; then
     curl -s --max-time 20 "$COVER" -o /tmp/cover.jpg
+    args=()
     if [ "$ARTIST" == "" ]; then
       args+=(--set spotify.title label="$TRACK"
              --set spotify.album label="Podcast"
@@ -64,14 +60,16 @@ update ()
              --set spotify.album label="$ALBUM"
              --set spotify.artist label="$ARTIST")
     fi
-    args+=(--set spotify.play icon=􀊆
+    play_icon=􀊄
+    [ "$PLAYER_STATE" = "playing" ] && play_icon=􀊆
+    args+=(--set spotify.play icon=$play_icon
            --set spotify.shuffle icon.highlight=$SHUFFLE
            --set spotify.repeat icon.highlight=$REPEAT
            --set spotify.cover background.image="/tmp/cover.jpg"
-                               background.color=0x00000000
-           --set spotify.anchor drawing=on                      )
+                               background.color=0x00000000 )
   else
-    args+=(--set spotify.anchor drawing=on popup.drawing=off
+    args=()
+    args+=(--set spotify_anchor popup.drawing=off
            --set spotify.play icon=􀊄                         )
   fi
   sketchybar -m "${args[@]}"
@@ -118,10 +116,6 @@ mouse_clicked () {
   esac
 }
 
-popup () {
-  sketchybar --set spotify.anchor popup.drawing=$1
-}
-
 routine() {
   case "$NAME" in
     "spotify.state") scroll
@@ -131,12 +125,14 @@ routine() {
   esac
 }
 
+if [ "$1" = "anchor" ]; then
+  update
+  sketchybar --set spotify_anchor popup.drawing=toggle
+  exit 0
+fi
+
 case "$SENDER" in
   "mouse.clicked") mouse_clicked
-  ;;
-  "mouse.entered") popup on
-  ;;
-  "mouse.exited.global") popup off
   ;;
   "routine") routine
   ;;

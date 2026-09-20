@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Anchor each background to its corresponding physical notch edge. The global
-# bar is transparent, leaving two visible continuous sections around the notch.
 notch_anchor=(
   width=1
   padding_left=0
@@ -27,27 +25,37 @@ section=(
   blur_radius=75
 )
 
-right_section_items=()
-[ "$ENABLE_SPOTIFY" = true ] && right_section_items+=(spotify.anchor)
-[ "$ENABLE_SYSTEM_METRICS" = true ] && right_section_items+=(memory cpu.percent)
-[ "$ENABLE_BRIGHTNESS" = true ] && right_section_items+=(brightness.icon brightness)
-[ "$ENABLE_VOLUME" = true ] && right_section_items+=(volume_icon)
-right_section_items+=(battery)
-[ "$ENABLE_GITHUB" = true ] && right_section_items+=(github.bell)
-[ "$ENABLE_NOTIFICATIONS" = true ] && right_section_items+=(notifications)
-[ "$ENABLE_FOCUS" = true ] && right_section_items+=(focus.mode)
-right_section_items+=(brew calendar)
+system_items=(battery)
+[ "$ENABLE_GITHUB" = true ] && system_items+=(github.bell)
+[ "$ENABLE_NOTIFICATIONS" = true ] && system_items+=(notifications)
+[ "$ENABLE_FOCUS" = true ] && system_items+=(focus.mode)
+system_items+=(brew)
 
-left_section_items=(apple.logo workspace.highlight '/^space\..*/')
-[ "$ENABLE_WORKSPACE_SEPARATOR" = true ] && left_section_items+=(separator)
-[ "$ENABLE_AEROSPACE_LAYOUT" = true ] && left_section_items+=(aerospace.layout)
-left_section_items+=(front_app)
+apple_items=(apple.logo)
+workspace_items=('/^space\..*/')
+[ "$ENABLE_WORKSPACE_SEPARATOR" = true ] && workspace_items+=(separator)
+[ "$ENABLE_AEROSPACE_LAYOUT" = true ] && workspace_items+=(aerospace.layout)
+workspace_items+=(front_app)
+
+privacy_items=(privacy_mic privacy_camera privacy_screen)
 
 sketchybar --add item bar.notch_left q \
            --set bar.notch_left "${notch_anchor[@]}" \
            --add item bar.notch_right e \
            --set bar.notch_right "${notch_anchor[@]}" \
-           --add bracket bar.left "${left_section_items[@]}" \
-           --set bar.left "${section[@]}" background.padding_left=10 \
-           --add bracket bar.right "${right_section_items[@]}" \
-           --set bar.right "${section[@]}" background.padding_right=10
+           --add bracket bar.apple "${apple_items[@]}" \
+           --set bar.apple "${section[@]}" background.padding_left=4 background.padding_right=4 \
+           --add bracket bar.workspace "${workspace_items[@]}" \
+           --set bar.workspace "${section[@]}" background.padding_left=8 background.padding_right=8 \
+           --add bracket bar.now_playing now_playing \
+           --set bar.now_playing "${section[@]}" background.padding_left=4 background.padding_right=4 background.drawing=off \
+           --add bracket bar.privacy "${privacy_items[@]}" \
+           --set bar.privacy "${section[@]}" background.padding_left=7 background.padding_right=7 \
+           --add bracket bar.spotify spotify_anchor \
+           --set bar.spotify "${section[@]}" background.padding_left=4 background.padding_right=4 \
+           --add bracket bar.metrics system_metrics \
+           --set bar.metrics "${section[@]}" background.padding_left=5 background.padding_right=5 background.x_offset=0 \
+           --add bracket bar.system "${system_items[@]}" \
+           --set bar.system "${section[@]}" background.padding_left=6 background.padding_right=6 \
+           --add bracket bar.clock calendar \
+           --set bar.clock "${section[@]}" background.padding_left=8 background.padding_right=8

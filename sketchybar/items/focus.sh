@@ -3,9 +3,11 @@
 focus_mode=(
   icon="$FOCUS_OFF"
   icon.font="$FONT:Bold:15.0"
+  icon.padding_left=0
+  icon.padding_right=0
   label.drawing=off
-  padding_left=8
-  padding_right=8
+  padding_left=6
+  padding_right=6
   update_freq=5
   updates=on
   script="$PLUGIN_DIR/focus.sh"

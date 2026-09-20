@@ -14,9 +14,6 @@ update() {
   fi
 
   PREV_COUNT=$(sketchybar --query github.bell | jq -r .label.value)
-  # For sound to play around with:
-  # afplay /System/Library/Sounds/Morse.aiff
-
   args+=(--remove '/github.notification\.*/')
 
   COUNTER=0

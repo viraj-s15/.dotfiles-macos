@@ -1,44 +1,41 @@
 # AeroSpace single-display setup
 config-version = 2
 
-start-at-login = true
 auto-reload-config = true
+start-at-login = true
 
-# Keep SketchyBar's workspace indicator synchronized with AeroSpace.
-exec-on-workspace-change = ['/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
-# Keep exactly ten named workspaces available.
 persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
 accordion-padding = 30
 automatically-unhide-macos-hidden-apps = true
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
 
 # Focus follows mouse: hover over a window to focus it
 focus-follows-mouse.enabled = false
 
-# The display's 32pt safe area contains the notch and native menu bar.
+# 32px area has notch
 gaps.inner.horizontal = 4
 gaps.inner.vertical = 4
-gaps.outer.left = 2
 gaps.outer.bottom = 2
-# macOS already reserves the notched menu-bar safe area; add only a small gap
-# between SketchyBar and tiled windows.
-gaps.outer.top = 5
+gaps.outer.left = 2
 gaps.outer.right = 2
+gaps.outer.top = 5
 
 # Raycast should remain an overlay instead of becoming a tiled window.
 [[on-window-detected]]
 if.app-id = 'com.raycast.macos'
 run = 'layout floating'
 
-# Keep Finder windows floating (a web modal's "choose file" spawns a real Finder
-# window, which must not steal a tile).
+# Keep Finder windows floating
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
@@ -63,8 +60,6 @@ if.app-id = 'com.apple.mail'
 if.window-title-regex-substring = '^Untitled$'
 run = 'layout floating'
 
-# TV creates a separate playback window for native fullscreen. Exclude TV from
-# layout callbacks entirely so AeroSpace does not touch that window mid-transition.
 [[on-window-detected]]
 if.app-id = 'com.apple.TV'
 run = 'exec-and-forget /usr/bin/true'
@@ -75,11 +70,10 @@ if = 'true'
 run = ['layout tiling', 'layout --root tiles']
 
 [mode.main.binding]
-# Cycle only through workspaces 1-10 and wrap at the ends.
-cmd-left  = 'echo -- 1 2 3 4 5 6 7 8 9 10 | workspace --stdin --wrap-around prev'
+cmd-left = 'echo -- 1 2 3 4 5 6 7 8 9 10 | workspace --stdin --wrap-around prev'
 cmd-right = 'echo -- 1 2 3 4 5 6 7 8 9 10 | workspace --stdin --wrap-around next'
 
-# Jump directly to workspaces 1-10.
+cmd-0 = 'workspace 10'
 cmd-1 = 'workspace 1'
 cmd-2 = 'workspace 2'
 cmd-3 = 'workspace 3'
@@ -89,10 +83,8 @@ cmd-6 = 'workspace 6'
 cmd-7 = 'workspace 7'
 cmd-8 = 'workspace 8'
 cmd-9 = 'workspace 9'
-cmd-0 = 'workspace 10'
 
-# Move the focused window directly to workspaces 1-10 and follow it.
-# Option is used here so macOS Command+Shift+3/4/5 screenshots still work.
+alt-shift-0 = 'move-node-to-workspace --focus-follows-window 10'
 alt-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
 alt-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
 alt-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
@@ -102,36 +94,35 @@ alt-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
 alt-shift-7 = 'move-node-to-workspace --focus-follows-window 7'
 alt-shift-8 = 'move-node-to-workspace --focus-follows-window 8'
 alt-shift-9 = 'move-node-to-workspace --focus-follows-window 9'
-alt-shift-0 = 'move-node-to-workspace --focus-follows-window 10'
 
 # Move the focused window to an adjacent workspace and follow it.
-cmd-shift-left  = 'echo -- 1 2 3 4 5 6 7 8 9 10 | move-node-to-workspace --stdin --wrap-around --focus-follows-window prev'
+cmd-shift-left = 'echo -- 1 2 3 4 5 6 7 8 9 10 | move-node-to-workspace --stdin --wrap-around --focus-follows-window prev'
 cmd-shift-right = 'echo -- 1 2 3 4 5 6 7 8 9 10 | move-node-to-workspace --stdin --wrap-around --focus-follows-window next'
 
 # Window focus and movement within a workspace.
-alt-left = 'focus left'
 alt-down = 'focus down'
-alt-up = 'focus up'
+alt-left = 'focus left'
 alt-right = 'focus right'
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
+alt-up = 'focus up'
 
 # Layout controls.
-alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
-alt-shift-space = 'layout floating tiling'
 alt-f = 'fullscreen'
 alt-shift-r = 'flatten-workspace-tree'
+alt-shift-space = 'layout floating tiling'
+alt-slash = 'layout tiles horizontal vertical'
 
 # Resize mode: Alt-R, then H/J/K/L; Enter or Esc exits.
 alt-r = 'mode resize'
 
 [mode.resize.binding]
+enter = 'mode main'
+esc = 'mode main'
 h = 'resize width -50'
 j = 'resize height +50'
 k = 'resize height -50'
 l = 'resize width +50'
-enter = 'mode main'
-esc = 'mode main'

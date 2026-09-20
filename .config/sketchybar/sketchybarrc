@@ -18,6 +18,12 @@ fi
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 PADDINGS=3 # All paddings use this value (icon, label, background)
 
+# Optional widgets. Change any value to true and reload SketchyBar to restore it.
+ENABLE_SPOTIFY=false
+ENABLE_BRIGHTNESS=false
+ENABLE_VOLUME=false
+ENABLE_AEROSPACE_LAYOUT=false
+
 # Setting up the general bar appearance of the bar
 bar=(
   height=29
@@ -31,7 +37,7 @@ bar=(
   y_offset=3
   margin=10
   blur_radius=0
-  notch_width=200
+  notch_width=280
 )
 
 sketchybar --bar "${bar[@]}"
@@ -64,7 +70,7 @@ sketchybar --default "${defaults[@]}"
 # Left
 source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/aerospace.sh"
+[ "$ENABLE_AEROSPACE_LAYOUT" = true ] && source "$ITEM_DIR/aerospace.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Right
@@ -72,11 +78,11 @@ source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/brew.sh"
 source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/brightness.sh"
+[ "$ENABLE_VOLUME" = true ] && source "$ITEM_DIR/volume.sh"
+[ "$ENABLE_BRIGHTNESS" = true ] && source "$ITEM_DIR/brightness.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/memory.sh"
-source "$ITEM_DIR/spotify.sh"
+[ "$ENABLE_SPOTIFY" = true ] && source "$ITEM_DIR/spotify.sh"
 source "$ITEM_DIR/bar_sections.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)

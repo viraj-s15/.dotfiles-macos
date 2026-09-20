@@ -1,14 +1,13 @@
 #!/bin/bash
 
 front_app=(
-  script='sketchybar --set "$NAME" label="$INFO"'
-  icon.drawing=off
-  padding_left=0
-  padding_right=0
-  label.padding_right=0
-  label.max_chars=16
-  label.color=$WHITE
-  label.font="$FONT:Black:12.0"
+  script='app_icon=$("$HOME/.config/sketchybar/plugins/icon_map.sh" "$INFO"); sketchybar --set "$NAME" icon="$app_icon"'
+  icon.drawing=on
+  icon.font="sketchybar-app-font:Regular:16.0"
+  icon.color=$WHITE
+  icon.padding_left=6
+  icon.padding_right=6
+  label.drawing=off
   associated_display=active
 )
 

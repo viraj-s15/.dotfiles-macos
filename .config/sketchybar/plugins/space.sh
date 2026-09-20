@@ -23,13 +23,12 @@ done < <(aerospace list-windows --workspace "$sid" --format '%{app-name}')
 
 if [ "$sid" = "$focused" ]; then
   HIGHLIGHT=on
-  LABEL_WIDTH=0
-  LABEL_BACKGROUND=off
 else
   HIGHLIGHT=off
-  LABEL_WIDTH=dynamic
-  LABEL_BACKGROUND=on
 fi
+
+LABEL_WIDTH=dynamic
+LABEL_BACKGROUND=on
 
 state=$(sketchybar --query "$NAME")
 current_drawing=$(echo "$state" | jq -r '.label.drawing')

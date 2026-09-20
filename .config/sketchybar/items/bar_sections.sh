@@ -25,13 +25,28 @@ section=(
   blur_radius=20
 )
 
+right_section_items=()
+[ "$ENABLE_SPOTIFY" = true ] && right_section_items+=(spotify.anchor)
+right_section_items+=(memory cpu.percent)
+[ "$ENABLE_BRIGHTNESS" = true ] && right_section_items+=(brightness.icon brightness)
+[ "$ENABLE_VOLUME" = true ] && right_section_items+=(volume_icon)
+right_section_items+=(battery github.bell brew calendar)
+
+status_items=(brew github.bell battery)
+[ "$ENABLE_VOLUME" = true ] && status_items+=(volume_icon)
+[ "$ENABLE_BRIGHTNESS" = true ] && status_items+=(brightness.icon)
+
+left_section_items=(apple.logo '/^space\..*/' separator)
+[ "$ENABLE_AEROSPACE_LAYOUT" = true ] && left_section_items+=(aerospace.layout)
+left_section_items+=(front_app)
+
 sketchybar --add item bar.notch_left q \
            --set bar.notch_left "${notch_anchor[@]}" \
            --add item bar.notch_right e \
            --set bar.notch_right "${notch_anchor[@]}" \
-           --add bracket bar.left apple.logo '/^space\..*/' separator aerospace.layout front_app bar.notch_left \
+           --add bracket bar.left "${left_section_items[@]}" \
            --set bar.left "${section[@]}" background.padding_left=10 \
-           --add bracket bar.right bar.notch_right spotify.anchor memory cpu.percent brightness.icon brightness volume_icon battery github.bell brew calendar \
+           --add bracket bar.right "${right_section_items[@]}" \
            --set bar.right "${section[@]}" background.padding_right=10
 
 # Bracket backgrounds are drawn in creation order. Recreate the inner groups
@@ -48,7 +63,7 @@ sketchybar --add bracket spaces '/^space\..*/' \
              background.corner_radius=8 \
              background.drawing=on
 
-sketchybar --add bracket status brew github.bell battery volume_icon brightness.icon \
+sketchybar --add bracket status "${status_items[@]}" \
            --set status \
              background.color=$BACKGROUND_1 \
              background.border_color=$BACKGROUND_2 \

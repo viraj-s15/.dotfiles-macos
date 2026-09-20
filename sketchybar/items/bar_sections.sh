@@ -25,7 +25,7 @@ section=(
   background.border_width=1
   background.drawing=on
   background.shadow.drawing=off
-  blur_radius=28
+  blur_radius=38
 )
 
 right_section_items=()

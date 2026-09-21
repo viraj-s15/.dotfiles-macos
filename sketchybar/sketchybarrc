@@ -32,7 +32,6 @@ ENABLE_WORKSPACE_SEPARATOR=true
 ENABLE_SYSTEM_METRICS=true
 ENABLE_GITHUB=false
 ENABLE_NOTIFICATIONS=true
-ENABLE_FOCUS=true
 
 NOTIFICATION_CENTER_HELPER="$HOME/.config/sketchybar/helper/notification-center"
 NOTIFICATION_CENTER_SOURCE="$HOME/.config/sketchybar/helper/notification-center.swift"
@@ -102,7 +101,6 @@ add_gap gap_clock_system right
 source "$ITEM_DIR/brew.sh"
 [ "$ENABLE_GITHUB" = true ] && source "$ITEM_DIR/github.sh"
 [ "$ENABLE_NOTIFICATIONS" = true ] && source "$ITEM_DIR/notifications.sh"
-[ "$ENABLE_FOCUS" = true ] && source "$ITEM_DIR/focus.sh"
 source "$ITEM_DIR/battery.sh"
 add_gap gap_system_privacy right
 source "$ITEM_DIR/privacy.sh"

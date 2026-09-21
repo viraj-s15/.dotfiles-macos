@@ -2,8 +2,10 @@
 
 cores="$(sysctl -n hw.ncpu)"
 cpu="$(ps -A -o %cpu= | awk -v cores="$cores" '{ total += $1 } END { printf "%.0f", total / cores }')"
-free_percent="$(memory_pressure -Q | awk '/System-wide memory free percentage:/ {gsub(/%/, "", $5); print $5}')"
 memory="--"
-[ -n "$free_percent" ] && memory=$((100 - free_percent))
+if command -v macmon >/dev/null 2>&1; then
+  memory="$(macmon pipe --samples 1 --interval 200 2>/dev/null | jq -r '.memory.ram_usage | if type == "number" then (. / 1000000000 | round) else "--" end')"
+fi
 
-sketchybar --set system_metrics label="${cpu}%    ${memory}%"
+sketchybar --set cpu.percent label="${cpu}%" \
+           --set memory.percent label="${memory} GB"

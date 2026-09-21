@@ -8,8 +8,6 @@ ACTIVITY=􀒓
 LOCK=􀒳
 BELL=􀋚
 BELL_DOT=􀝗
-FOCUS_OFF=􀆹
-FOCUS_ON=􀆺
 BRIGHTNESS=􀆮
 
 # Git Icons

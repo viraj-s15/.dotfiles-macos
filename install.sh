@@ -53,6 +53,7 @@ brew tap FelixKratz/formulae
 install_formula sketchybar
 install_formula fastfetch
 install_formula nowplaying-cli
+install_formula macmon
 
 if ! command -v jq >/dev/null 2>&1; then
   install_formula jq

@@ -22,13 +22,12 @@ section=(
   background.border_width=0
   background.drawing=on
   background.shadow.drawing=off
-  blur_radius=75
+  blur_radius=45
 )
 
 system_items=(battery)
 [ "$ENABLE_GITHUB" = true ] && system_items+=(github.bell)
 [ "$ENABLE_NOTIFICATIONS" = true ] && system_items+=(notifications)
-[ "$ENABLE_FOCUS" = true ] && system_items+=(focus.mode)
 system_items+=(brew)
 
 apple_items=(apple.logo)
@@ -53,7 +52,7 @@ sketchybar --add item bar.notch_left q \
            --set bar.privacy "${section[@]}" background.padding_left=7 background.padding_right=7 \
            --add bracket bar.spotify spotify_anchor \
            --set bar.spotify "${section[@]}" background.padding_left=4 background.padding_right=4 \
-           --add bracket bar.metrics system_metrics \
+           --add bracket bar.metrics cpu.percent memory.percent cpu.temperature gpu.temperature \
            --set bar.metrics "${section[@]}" background.padding_left=5 background.padding_right=5 background.x_offset=0 \
            --add bracket bar.system "${system_items[@]}" \
            --set bar.system "${section[@]}" background.padding_left=6 background.padding_right=6 \

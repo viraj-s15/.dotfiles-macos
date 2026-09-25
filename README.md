@@ -1,6 +1,6 @@
 # macOS dotfiles
 
-Catppuccin SketchyBar islands, ten AeroSpace workspaces, and a small Fastfetch setup.
+Catppuccin SketchyBar islands, ten AeroSpace workspaces, a small Fastfetch setup, and a Starship prompt.
 
 ![Desktop with SketchyBar and Fastfetch](assets/desktop.png)
 
@@ -14,8 +14,9 @@ Catppuccin SketchyBar islands, ten AeroSpace workspaces, and a small Fastfetch s
   ./install.sh
   ```
 
-- Existing config folders are moved to timestamped backups before the new symlinks are created.
+- Existing config folders and files are moved to timestamped backups before the new symlinks are created.
 - Rerun the script after Apple Command Line Tools finish installing if prompted.
+- Starship is installed and `~/.config/starship.toml` is linked; initialize the prompt in your shell (for zsh: `eval "$(starship init zsh)"` in `~/.zshrc`).
 
 ## macOS settings
 

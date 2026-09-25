@@ -52,6 +52,7 @@ install_cask() {
 brew tap FelixKratz/formulae
 install_formula sketchybar
 install_formula fastfetch
+install_formula starship
 install_formula nowplaying-cli
 install_formula macmon
 
@@ -98,6 +99,7 @@ link_config aerospace
 link_config sketchybar
 link_config fastfetch
 link_config ghostty
+link_config starship.toml
 
 SUDOERS_SOURCE="$REPO_DIR/sketchybar/helper/sketchybar-power-mode.sudoers"
 SUDOERS_TEMP="$(mktemp)"

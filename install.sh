@@ -100,6 +100,21 @@ link_config sketchybar
 link_config fastfetch
 link_config ghostty
 link_config starship.toml
+link_config aerospace-swipe
+
+# Reserve three-finger horizontal swipes for AeroSpace; leave four-finger gestures intact.
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+
+SWIPE_DIR="$HOME/.local/share/aerospace-swipe"
+if [ ! -d "$SWIPE_DIR/.git" ]; then
+  git clone https://github.com/acsandmann/aerospace-swipe.git "$SWIPE_DIR"
+fi
+if launchctl print "gui/$(id -u)/com.acsandmann.swipe" >/dev/null 2>&1; then
+  echo "aerospace-swipe is already running."
+else
+  make -C "$SWIPE_DIR" install
+fi
 
 SUDOERS_SOURCE="$REPO_DIR/sketchybar/helper/sketchybar-power-mode.sudoers"
 SUDOERS_TEMP="$(mktemp)"

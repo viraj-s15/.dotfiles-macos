@@ -55,6 +55,9 @@ install_formula fastfetch
 install_formula starship
 install_formula nowplaying-cli
 install_formula macmon
+install_formula neovim
+install_formula ripgrep
+install_formula fd
 
 if ! command -v jq >/dev/null 2>&1; then
   install_formula jq
@@ -101,6 +104,7 @@ link_config fastfetch
 link_config ghostty
 link_config starship.toml
 link_config aerospace-swipe
+link_config nvim
 
 # Reserve three-finger horizontal swipes for AeroSpace; leave four-finger gestures intact.
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0

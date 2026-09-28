@@ -1,6 +1,6 @@
 # macOS dotfiles
 
-Catppuccin SketchyBar islands, ten AeroSpace workspaces, a small Fastfetch setup, and a Starship prompt.
+Catppuccin SketchyBar islands, ten AeroSpace workspaces, a small Fastfetch setup, a Starship prompt, and Neovim with the Oxocarbon theme.
 
 ![Desktop with SketchyBar and Fastfetch](assets/desktop.png)
 
@@ -17,6 +17,9 @@ Catppuccin SketchyBar islands, ten AeroSpace workspaces, a small Fastfetch setup
 - Existing config folders and files are moved to timestamped backups before the new symlinks are created.
 - Rerun the script after Apple Command Line Tools finish installing if prompted.
 - Starship is installed and `~/.config/starship.toml` is linked; initialize the prompt in your shell (for zsh: `eval "$(starship init zsh)"` in `~/.zshrc`).
+- Neovim is installed via Homebrew along with `ripgrep` and `fd`, and `~/.config/nvim` is linked to this repo's `nvim/` directory. On first launch, LazyVim downloads its plugins; the lockfile pins their versions.
+- Both Oxocarbon and Catppuccin are installed. Oxocarbon is the default; use `:colorscheme catppuccin` in Neovim to switch for the current session (or change `colorscheme` in `nvim/lua/plugins/colorscheme.lua` to make it the default).
+- C and C++ files use the Apple Command Line Tools `clangd` for language-server diagnostics, navigation, and completion through LazyVim's built-in Blink completion. Open a C++ project with `nvim path/to/file.cpp`; for accurate build flags, provide a `compile_commands.json` or `compile_flags.txt` in the project.
 - Three-finger horizontal swipes cycle through all ten AeroSpace workspaces (including empty ones); swiping left advances, swiping right goes back, and the ends wrap around.
 - The installer disables macOS's three-finger horizontal Space swipe (four-finger gestures are unchanged). Grant **Accessibility** access to **AerospaceSwipe** in **System Settings → Privacy & Security → Accessibility** when prompted. If macOS still switches native Spaces, check **Swipe between full-screen applications** in **System Settings → Trackpad → More Gestures**.
 

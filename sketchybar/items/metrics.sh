@@ -11,12 +11,12 @@ metric_item=(
 )
 
 sketchybar --add item gpu.temperature right \
-           --set gpu.temperature "${metric_item[@]}" label="G --°" label.color=$GREEN \
+           --set gpu.temperature "${metric_item[@]}" label="G --°" label.color=$WHITE \
            --add item cpu.temperature right \
-           --set cpu.temperature "${metric_item[@]}" label="C --°" label.color=$YELLOW \
+           --set cpu.temperature "${metric_item[@]}" label="C --°" label.color=$WHITE \
                  update_freq=60 updates=on script="$PLUGIN_DIR/temperature.sh" \
            --add item memory.percent right \
-           --set memory.percent "${metric_item[@]}" label="-- GB" label.color=$MAGENTA \
+           --set memory.percent "${metric_item[@]}" label="-- GB" label.color=$WHITE \
            --add item cpu.percent right \
-           --set cpu.percent "${metric_item[@]}" label="--%" label.color=$BLUE \
+           --set cpu.percent "${metric_item[@]}" label="--%" label.color=$WHITE \
                  update_freq=30 updates=on script="$PLUGIN_DIR/metrics.sh"

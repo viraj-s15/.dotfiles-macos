@@ -11,7 +11,6 @@ now_playing=(
   label.font="$FONT:Semibold:12.0"
   label.padding_left=0
   label.padding_right=7
-  width=168
   padding_left=0
   padding_right=0
   update_freq=3

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source "$CONFIG_DIR/colors.sh"
+export LC_ALL=en_US.UTF-8
 
 media_json="$(nowplaying-cli get --json title artist playbackRate clientBundleIdentifier 2>/dev/null)"
 playing="$(jq -r '(.playbackRate // 0) > 0 and (.title // "") != ""' <<< "$media_json")"
@@ -11,7 +12,7 @@ if [ "$playing" = true ]; then
   bundle_identifier="$(jq -r '.clientBundleIdentifier // ""' <<< "$media_json")"
   text="$title"
   [ -n "$artist" ] && text="$artist · $title"
-  text="$(printf '%s' "$text" | cut -c1-24)"
+  [ ${#text} -gt 55 ] && text="${text:0:54}…"
 
   icon="􀊆"
   icon_font="SF Pro:Bold:13.0"

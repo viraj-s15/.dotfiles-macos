@@ -1,5 +1,7 @@
 font-size = 16
 theme = Catppuccin Macchiato
 
-background-opacity = 0.90
-background-blur = 30
+# Native macOS Liquid Glass. Use macos-glass-clear for a more transparent look.
+background-blur = macos-glass-regular
+background-opacity = 0.82
+macos-titlebar-style = transparent

@@ -15,6 +15,7 @@ Catppuccin SketchyBar islands, ten AeroSpace workspaces, a small Fastfetch setup
   ```
 
 - Existing config folders and files are moved to timestamped backups before the new symlinks are created.
+- Symlinks are managed by `link.sh`. `install.sh` sets `core.hooksPath` to `.githooks`, so `link.sh` reruns after every pull, checkout, and rebase. It relinks moved files, removes broken links into this repo, and reloads AeroSpace. Add new configs to `CONFIGS` in `link.sh`.
 - Rerun the script after Apple Command Line Tools finish installing if prompted.
 - Starship is installed and `~/.config/starship.toml` is linked; initialize the prompt in your shell (for zsh: `eval "$(starship init zsh)"` in `~/.zshrc`).
 - Neovim is installed via Homebrew along with `ripgrep` and `fd`, and `~/.config/nvim` is linked to this repo's `nvim/` directory. On first launch, LazyVim downloads its plugins; the lockfile pins their versions.

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Relink configs so moved or renamed files never leave broken symlinks.
+"$(git rev-parse --show-toplevel)/link.sh" >/dev/null || echo "link.sh failed; run it manually." >&2

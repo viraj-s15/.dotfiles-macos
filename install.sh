@@ -8,10 +8,8 @@ if [ "$(uname -s)" != "Darwin" ]; then
 fi
 
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_DIR="$HOME/.config"
 FONT_DIR="$HOME/Library/Fonts"
 APP_FONT="$FONT_DIR/sketchybar-app-font.ttf"
-BACKUP_SUFFIX="$(date +%Y%m%d-%H%M%S)"
 
 if ! xcode-select -p >/dev/null 2>&1; then
   echo "Installing Apple Command Line Tools. Rerun this script when the installation finishes."
@@ -76,35 +74,10 @@ else
     -o "$APP_FONT"
 fi
 
-mkdir -p "$CONFIG_DIR"
+"$REPO_DIR/link.sh"
 
-link_config() {
-  local name="$1"
-  local source="$REPO_DIR/$name"
-  local target="$CONFIG_DIR/$name"
-
-  if [ -L "$target" ] && [ "$target" -ef "$source" ]; then
-    echo "$name is already linked."
-    return
-  fi
-
-  if [ -e "$target" ] || [ -L "$target" ]; then
-    local backup="$target.backup-$BACKUP_SUFFIX"
-    mv "$target" "$backup"
-    echo "Backed up $target to $backup."
-  fi
-
-  ln -s "$source" "$target"
-  echo "Linked $name."
-}
-
-link_config aerospace
-link_config sketchybar
-link_config fastfetch
-link_config ghostty
-link_config starship.toml
-link_config aerospace-swipe
-link_config nvim
+# Relink automatically whenever git changes the checkout (pull, checkout, rebase).
+git -C "$REPO_DIR" config core.hooksPath .githooks
 
 # Reserve three-finger horizontal swipes for AeroSpace; leave four-finger gestures intact.
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0

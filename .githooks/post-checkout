@@ -1,0 +1,4 @@
+#!/bin/bash
+# $3 is 1 for branch checkouts, 0 for file checkouts.
+[ "${3:-1}" = "1" ] || exit 0
+"$(git rev-parse --show-toplevel)/link.sh" >/dev/null || echo "link.sh failed; run it manually." >&2

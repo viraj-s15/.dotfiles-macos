@@ -60,6 +60,12 @@ if.app-id = 'com.apple.mail'
 if.window-title-regex-substring = '^Untitled$'
 run = 'layout floating'
 
+# Apple TV opens playback in a separate untitled window; send it straight to native fullscreen.
+[[on-window-detected]]
+if.app-id = 'com.apple.TV'
+if.window-title-regex-substring = '^$'
+run = ['layout floating', 'macos-native-fullscreen on']
+
 [[on-window-detected]]
 if.app-id = 'com.apple.TV'
 run = 'exec-and-forget /usr/bin/true'

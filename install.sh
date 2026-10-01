@@ -54,6 +54,7 @@ install_formula starship
 install_formula nowplaying-cli
 install_formula macmon
 install_formula neovim
+install_formula neovide
 install_formula ripgrep
 install_formula fd
 
@@ -64,7 +65,13 @@ fi
 install_cask nikitabobko/tap/aerospace
 install_cask ghostty
 install_cask font-sf-pro
+install_cask font-jetbrains-mono-nerd-font
 install_cask sf-symbols
+
+if [ ! -e "$HOME/Applications/Neovide.app" ] && [ ! -L "$HOME/Applications/Neovide.app" ]; then
+  mkdir -p "$HOME/Applications"
+  ln -s "$(brew --prefix neovide)/Neovide.app" "$HOME/Applications/Neovide.app"
+fi
 
 mkdir -p "$FONT_DIR"
 if [ -s "$APP_FONT" ]; then

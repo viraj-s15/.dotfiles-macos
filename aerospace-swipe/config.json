@@ -2,5 +2,9 @@
   "fingers": 3,
   "natural_swipe": true,
   "skip_empty": false,
-  "wrap_around": true
+  "wrap_around": true,
+  "swipe_tolerance": 1,
+  "distance_pct": 0.05,
+  "velocity_pct": 0.2,
+  "settle_factor": 0.3
 }

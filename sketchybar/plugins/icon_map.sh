@@ -545,6 +545,9 @@ case $@ in
 "Sequel Ace")
   icon_result=":sequel_ace:"
   ;;
+"Hermes" | "Hermes Agent")
+  icon_result=":hermes_agent:"
+  ;;
 *)
   icon_result=":default:"
   ;;

@@ -25,7 +25,7 @@ section=(
   blur_radius=45
 )
 
-system_items=(battery)
+system_items=(nightshift battery)
 [ "$ENABLE_GITHUB" = true ] && system_items+=(github.bell)
 [ "$ENABLE_NOTIFICATIONS" = true ] && system_items+=(notifications)
 system_items+=(brew)

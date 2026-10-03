@@ -10,6 +10,10 @@ BELL=􀋚
 BELL_DOT=􀝗
 BRIGHTNESS=􀆮
 
+# Night Shift Icons
+NIGHTSHIFT_ON=􀆹   # moon.circle.fill - warmer colors active
+NIGHTSHIFT_OFF=􀆸  # moon.circle - normal display
+
 # Git Icons
 GIT_ISSUE=􀍷
 GIT_DISCUSSION=􀒤

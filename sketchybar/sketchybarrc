@@ -102,6 +102,7 @@ source "$ITEM_DIR/brew.sh"
 [ "$ENABLE_GITHUB" = true ] && source "$ITEM_DIR/github.sh"
 [ "$ENABLE_NOTIFICATIONS" = true ] && source "$ITEM_DIR/notifications.sh"
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/nightshift.sh"
 add_gap gap_system_privacy right
 source "$ITEM_DIR/privacy.sh"
 add_gap gap_privacy_spotify right

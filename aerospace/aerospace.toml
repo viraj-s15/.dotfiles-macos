@@ -53,6 +53,13 @@ if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = '^$'
 run = 'layout floating'
 
+# Phi draws the Cmd+T "Search or Enter URL" omnibox as its own untitled window.
+# Real browser windows carry the profile name ("Default", "UPenn", ...).
+[[on-window-detected]]
+if.app-id = 'com.phibrowser.Mac'
+if.window-title-regex-substring = '^$'
+run = 'layout floating'
+
 # Mail creates a short-lived "Untitled" helper window while searching. Keep only
 # that helper floating so it cannot split or reset the main Mail window's layout.
 [[on-window-detected]]

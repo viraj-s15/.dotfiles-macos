@@ -548,6 +548,9 @@ case $@ in
 "Hermes" | "Hermes Agent")
   icon_result=":hermes_agent:"
   ;;
+"Phi" | "Phi Browser")
+  icon_result=":phi_browser:"
+  ;;
 *)
   icon_result=":default:"
   ;;

@@ -74,12 +74,8 @@ if [ ! -e "$HOME/Applications/Neovide.app" ] && [ ! -L "$HOME/Applications/Neovi
 fi
 
 mkdir -p "$FONT_DIR"
-if [ -s "$APP_FONT" ]; then
-  echo "sketchybar-app-font is already installed."
-else
-  curl -fsSL https://github.com/kvndrsslr/sketchybar-app-font/releases/latest/download/sketchybar-app-font.ttf \
-    -o "$APP_FONT"
-fi
+# Vendored build: upstream sketchybar-app-font plus a custom Phi glyph (see sketchybar/fonts/).
+cp "$REPO_DIR/sketchybar/fonts/sketchybar-app-font.ttf" "$APP_FONT"
 
 "$REPO_DIR/link.sh"
 

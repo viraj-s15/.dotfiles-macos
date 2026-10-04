@@ -60,6 +60,12 @@ if.app-id = 'com.phibrowser.Mac'
 if.window-title-regex-substring = '^$'
 run = 'layout floating'
 
+# Phi's YouTube/video Picture in Picture window must stay a floating overlay.
+[[on-window-detected]]
+if.app-id = 'com.phibrowser.Mac'
+if.window-title-regex-substring = '^Picture in Picture$'
+run = 'layout floating'
+
 # Mail creates a short-lived "Untitled" helper window while searching. Keep only
 # that helper floating so it cannot split or reset the main Mail window's layout.
 [[on-window-detected]]

@@ -413,6 +413,9 @@ case $@ in
 "Spotlight")
   icon_result=":spotlight:"
   ;;
+"Search")
+  icon_result=":search:"
+  ;;
 "Music")
   icon_result=":music:"
   ;;

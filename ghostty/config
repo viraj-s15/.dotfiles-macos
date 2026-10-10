@@ -1,7 +1,13 @@
-font-size = 16
+font-size = 18
 theme = oxocarbon-grey
 
 # Native macOS Liquid Glass. Use macos-glass-clear for a more transparent look.
 background-blur = macos-glass-regular
 background-opacity = 0.82
 macos-titlebar-style = transparent
+
+# Cmd+V also sends an empty bracketed paste after the normal paste. Terminals cannot paste images,
+# so an image-only clipboard pastes nothing; Pi and Claude Code treat the empty paste as "look at
+# the clipboard for an image". A text paste is unaffected: they see the empty paste and ignore it.
+keybind = super+v=paste_from_clipboard
+keybind = chain=text:\x1b[200~\x1b[201~

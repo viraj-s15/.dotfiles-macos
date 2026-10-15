@@ -188,6 +188,9 @@ case $@ in
 "Messages" | "Nachrichten")
   icon_result=":messages:"
   ;;
+"Muse" | "Muse from Meta")
+  icon_result=":spark:"
+  ;;
 "Tweetbot" | "Twitter")
   icon_result=":twitter:"
   ;;

@@ -2,7 +2,7 @@
 
 Catppuccin SketchyBar islands, ten AeroSpace workspaces, a small Fastfetch setup, a Starship prompt, and Neovim with the Oxocarbon Grey theme.
 
-![Desktop with SketchyBar and Fastfetch](assets/desktop.png)
+![Desktop with SketchyBar and Fastfetch](assets/desktop-2026-10-15.png)
 
 ## Install
 

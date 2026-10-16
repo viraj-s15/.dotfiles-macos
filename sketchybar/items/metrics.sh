@@ -2,7 +2,7 @@
 
 metric_item=(
   icon.drawing=off
-  label.font="$TEXT_FONT:Bold:12.0"
+  label.font="$TEXT_FONT:Bold:14.0"
   label.align=center
   label.padding_left=7
   label.padding_right=7

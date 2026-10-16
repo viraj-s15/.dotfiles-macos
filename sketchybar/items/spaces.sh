@@ -7,7 +7,7 @@ sketchybar --add event aerospace_workspace_change
 for sid in {1..10}; do
   space=(
     icon="$sid"
-    icon.font="$TEXT_FONT:Bold:13.0"
+    icon.font="$TEXT_FONT:Bold:14.0"
     icon.padding_left=0
     icon.padding_right=0
     icon.align=center

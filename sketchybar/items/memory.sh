@@ -2,7 +2,7 @@
 
 memory=(
   label="--%"
-  label.font="$FONT:Heavy:12"
+  label.font="$TEXT_FONT:Bold:12"
   label.color=$MAGENTA
   icon.drawing=off
   padding_left=8

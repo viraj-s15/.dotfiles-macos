@@ -37,7 +37,7 @@ spotify_title=(
   padding_left=0
   padding_right=0
   width=0
-  label.font="$FONT:Heavy:15.0"
+  label.font="$TEXT_FONT:Bold:15.0"
   y_offset=55
 )
 
@@ -59,11 +59,11 @@ spotify_album=(
 
 spotify_state=(
   icon.drawing=on
-  icon.font="$FONT:Light Italic:10.0"
+  icon.font="$TEXT_FONT:Light Italic:10.0"
   icon.width=35
   icon="00:00"
   label.drawing=on
-  label.font="$FONT:Light Italic:10.0"
+  label.font="$TEXT_FONT:Light Italic:10.0"
   label.width=35
   label="00:00"
   padding_left=0

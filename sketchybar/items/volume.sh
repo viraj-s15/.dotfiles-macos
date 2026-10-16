@@ -24,7 +24,7 @@ volume_icon=(
   icon.font="$FONT:Regular:14.0"
   label.width=25
   label.align=left
-  label.font="$FONT:Regular:14.0"
+  label.font="$TEXT_FONT:Regular:14.0"
 )
 
 status_bracket=(

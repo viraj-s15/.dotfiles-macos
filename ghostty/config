@@ -3,7 +3,7 @@ theme = oxocarbon-grey
 
 # Native macOS Liquid Glass. Use macos-glass-clear for a more transparent look.
 background-blur = macos-glass-regular
-background-opacity = 0.82
+background-opacity = 0.91
 macos-titlebar-style = transparent
 
 # Cmd+V also sends an empty bracketed paste after the normal paste. Terminals cannot paste images,

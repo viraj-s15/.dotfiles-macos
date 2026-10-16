@@ -12,7 +12,8 @@ if [ "$playing" = true ]; then
   bundle_identifier="$(jq -r '.clientBundleIdentifier // ""' <<< "$media_json")"
   text="$title"
   [ -n "$artist" ] && text="$artist · $title"
-  [ ${#text} -gt 55 ] && text="${text:0:54}…"
+  # Leave room before the notch, including the wider monospace text and pill padding.
+  [ ${#text} -gt 36 ] && text="${text:0:35}…"
 
   icon="􀊆"
   icon_font="SF Pro:Bold:13.0"

@@ -2,10 +2,10 @@
 
 calendar=(
   icon=cal
-  icon.font="$FONT:Black:12.0"
+  icon.font="$TEXT_FONT:Bold:12.0"
   icon.padding_left=0
   icon.padding_right=6
-  label.width=38
+  label.width=42
   label.align=right
   label.padding_left=6
   label.padding_right=0

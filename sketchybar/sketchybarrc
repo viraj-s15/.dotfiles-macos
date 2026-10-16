@@ -15,7 +15,9 @@ if [ ! -x "$BRIGHTNESS_HELPER" ] || [ "$BRIGHTNESS_SOURCE" -nt "$BRIGHTNESS_HELP
          -o "$BRIGHTNESS_HELPER"
 fi
 
+# Keep SF Pro for system symbols; use monospace for all text.
 FONT="SF Pro"
+TEXT_FONT="JetBrainsMono Nerd Font"
 PADDINGS=3
 
 add_gap() {
@@ -68,7 +70,7 @@ defaults=(
   icon.color=$ICON_COLOR
   icon.padding_left=$PADDINGS
   icon.padding_right=$PADDINGS
-  label.font="$FONT:Semibold:13.0"
+  label.font="$TEXT_FONT:SemiBold:13.0"
   label.color=$LABEL_COLOR
   label.padding_left=$PADDINGS
   label.padding_right=$PADDINGS

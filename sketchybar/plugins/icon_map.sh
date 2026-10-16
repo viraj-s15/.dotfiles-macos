@@ -533,7 +533,7 @@ case $@ in
 "Podcasts")
   icon_result=":podcasts:"
   ;;
-"Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "WezTerm")
+"Alacritty" | "Hyper" | "iTerm2" | "kitty" | "Terminal" | "WezTerm" | "Zentty")
   icon_result=":terminal:"
   ;;
 "Tor Browser")

@@ -146,6 +146,9 @@ case $@ in
 "Pages Creator Studio")
   icon_result=":pages:"
   ;;
+"Paseo")
+  icon_result=":paseo:"
+  ;;
 "Raycast")
   icon_result=":raycast:"
   ;;

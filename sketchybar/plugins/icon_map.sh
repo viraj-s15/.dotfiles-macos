@@ -2,6 +2,9 @@ case $@ in
 "Apps")
   icon_result=":app_store:"
   ;;
+"Arc")
+  icon_result=":arc:"
+  ;;
 "Automator")
   icon_result=":automator:"
   ;;

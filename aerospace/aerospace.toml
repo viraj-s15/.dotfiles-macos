@@ -46,12 +46,38 @@ if.app-id = 'com.apple.appkit.xpc.openAndSavePanelService'
 run = 'layout floating'
 
 # Zen/Firefox draws its file picker as an in-process window with a BLANK title.
-# Without this it matches only the catch-all rule below and gets tiled, splitting
-# the workspace for as long as the picker is open.
+# Explicitly keep these floating even if AeroSpace identifies them as normal windows.
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = '^$'
 run = 'layout floating'
+
+# Preserve AeroSpace's automatic floating detection for Zen dialogs and extension
+# pop-ups. Normal browser windows still tile; only enforce the workspace layout,
+# not `layout tiling`, which would force detected dialogs back into the tile tree.
+# Stop here so Zen windows never reach the force-tiling catch-all below.
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = 'layout --root tiles'
+
+# Arc extension pop-ups (e.g. iCloud Passwords) open as untitled windows.
+# Real browser windows always carry the active tab's title.
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+if.window-title-regex-substring = '^$'
+run = 'layout floating'
+
+# Arc Settings is titled after its selected pane.
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+if.window-title-regex-substring = '^(General|Profiles|Max|Links|Shortcuts|Icon|Advanced|Viraj)$'
+run = 'layout floating'
+
+# Other Arc windows: keep AeroSpace's dialog heuristic (aux windows have no
+# fullscreen button) instead of forcing them to tile.
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'layout --root tiles'
 
 # Phi draws the Cmd+T "Search or Enter URL" omnibox as its own untitled window.
 # Real browser windows carry the profile name ("Default", "UPenn", ...).

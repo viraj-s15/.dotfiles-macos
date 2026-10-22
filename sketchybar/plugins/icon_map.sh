@@ -167,7 +167,7 @@ case $@ in
 "Zen")
   icon_result=":zen_browser:"
   ;;
-"T3 Code" | "T3 Code (Alpha)")
+"T3 Code" | "T3 Code (Alpha)" | "T3 Code (Nightly)")
   icon_result=":t3_code:"
   ;;
 "Prime Video")

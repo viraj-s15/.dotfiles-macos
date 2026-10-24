@@ -563,6 +563,9 @@ case $@ in
 "Phi" | "Phi Browser")
   icon_result=":phi_browser:"
   ;;
+"Ardia")
+  icon_result=":ardia:"
+  ;;
 *)
   icon_result=":default:"
   ;;

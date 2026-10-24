@@ -79,6 +79,18 @@ run = 'layout floating'
 if.app-id = 'company.thebrowser.Browser'
 run = 'layout --root tiles'
 
+# Dia extension pop-ups and settings open as untitled/auxiliary windows.
+# Real browser windows carry the active tab's title.
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.dia'
+if.window-title-regex-substring = '^$|^Settings$'
+run = 'layout floating'
+
+# Other Dia windows: keep AeroSpace's dialog heuristic instead of forcing tiling.
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.dia'
+run = 'layout --root tiles'
+
 # Phi draws the Cmd+T "Search or Enter URL" omnibox as its own untitled window.
 # Real browser windows carry the profile name ("Default", "UPenn", ...).
 [[on-window-detected]]

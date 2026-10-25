@@ -104,6 +104,17 @@ if.app-id = 'com.phibrowser.Mac'
 if.window-title-regex-substring = '^Picture in Picture$'
 run = 'layout floating'
 
+# Phi Settings / Passwords and similar auxiliary windows should float.
+[[on-window-detected]]
+if.app-id = 'com.phibrowser.Mac'
+if.window-title-regex-substring = '(?i)^(settings|preferences|passwords?|password manager|extensions|history|downloads|bookmarks)'
+run = 'layout floating'
+
+# Other Phi windows: keep AeroSpace's dialog heuristic instead of forcing tiling.
+[[on-window-detected]]
+if.app-id = 'com.phibrowser.Mac'
+run = 'layout --root tiles'
+
 # Mail creates a short-lived "Untitled" helper window while searching. Keep only
 # that helper floating so it cannot split or reset the main Mail window's layout.
 [[on-window-detected]]

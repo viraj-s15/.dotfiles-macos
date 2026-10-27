@@ -566,6 +566,9 @@ case $@ in
 "Ardia")
   icon_result=":ardia:"
   ;;
+"Writer")
+  icon_result=":ia_writer:"
+  ;;
 *)
   icon_result=":default:"
   ;;

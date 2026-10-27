@@ -569,6 +569,9 @@ case $@ in
 "Writer")
   icon_result=":ia_writer:"
   ;;
+"Aside")
+  icon_result=":aside:"
+  ;;
 *)
   icon_result=":default:"
   ;;

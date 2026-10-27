@@ -115,6 +115,18 @@ run = 'layout floating'
 if.app-id = 'com.phibrowser.Mac'
 run = 'layout --root tiles'
 
+# Aside draws its AI chat panel, mini popup, settings, extension pop-ups and PiP
+# as separate windows. Float those; only real browser windows tile.
+[[on-window-detected]]
+if.app-id = 'at.studio.AsideBrowser'
+if.window-title-regex-substring = '(?i)^$|^untitled$|mini popup|chat|assistant|^ask|settings|preferences|passwords?|extensions?|downloads|history|bookmarks|picture in picture'
+run = 'layout floating'
+
+# Other Aside windows: keep AeroSpace's dialog heuristic instead of forcing tiling.
+[[on-window-detected]]
+if.app-id = 'at.studio.AsideBrowser'
+run = 'layout --root tiles'
+
 # Mail creates a short-lived "Untitled" helper window while searching. Keep only
 # that helper floating so it cannot split or reset the main Mail window's layout.
 [[on-window-detected]]

@@ -572,6 +572,9 @@ case $@ in
 "Aside")
   icon_result=":aside:"
   ;;
+"Rex Beta")
+  icon_result=":rex:"
+  ;;
 *)
   icon_result=":default:"
   ;;

@@ -74,7 +74,7 @@ if [ ! -e "$HOME/Applications/Neovide.app" ] && [ ! -L "$HOME/Applications/Neovi
 fi
 
 mkdir -p "$FONT_DIR"
-# Vendored build: upstream sketchybar-app-font plus a custom Phi glyph (see sketchybar/fonts/).
+# Vendored build: upstream sketchybar-app-font plus custom Phi and Freebuff glyphs (see sketchybar/fonts/).
 cp "$REPO_DIR/sketchybar/fonts/sketchybar-app-font.ttf" "$APP_FONT"
 
 "$REPO_DIR/link.sh"

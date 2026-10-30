@@ -122,6 +122,9 @@ case $@ in
 "Free Download Manager")
   icon_result=":jdownloader:"
   ;;
+"Freebuff")
+  icon_result=":freebuff:"
+  ;;
 "GarageBand")
   icon_result=":music:"
   ;;

@@ -578,6 +578,9 @@ case $@ in
 "Rex Beta")
   icon_result=":rex:"
   ;;
+"Yab")
+  icon_result=":min_browser:"
+  ;;
 *)
   icon_result=":default:"
   ;;

@@ -1,2 +1,5 @@
 # Local notes; do not publish.
 /docs/
+
+# macOS Finder metadata
+.DS_Store

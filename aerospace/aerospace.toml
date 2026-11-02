@@ -45,6 +45,11 @@ run = 'layout floating'
 if.app-id = 'com.apple.appkit.xpc.openAndSavePanelService'
 run = 'layout floating'
 
+# Touch ID / password prompt (e.g. iCloud Passwords autofill in any browser).
+[[on-window-detected]]
+if.app-id = 'com.apple.LocalAuthentication.UIAgent'
+run = 'layout floating'
+
 # Zen/Firefox draws its file picker as an in-process window with a BLANK title.
 # Explicitly keep these floating even if AeroSpace identifies them as normal windows.
 [[on-window-detected]]

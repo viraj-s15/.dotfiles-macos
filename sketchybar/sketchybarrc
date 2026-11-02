@@ -53,9 +53,9 @@ bar=(
   shadow=off
   position=top
   sticky=on
-  # macOS 27.2: MenuBarAgent's invisible top-edge window swallows clicks
-  # unless the bar sits at status level (FelixKratz/SketchyBar#852).
-  topmost=on
+  # macOS 27.2 click fix comes from the patched strayer/tap/sketchybar build
+  # (FelixKratz/SketchyBar#852); topmost=off lets the revealed menu bar draw on top.
+  topmost=off
   padding_right=10
   padding_left=10
   corner_radius=10

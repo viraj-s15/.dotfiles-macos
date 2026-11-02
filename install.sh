@@ -47,8 +47,10 @@ install_cask() {
   fi
 }
 
-brew tap FelixKratz/formulae
-install_formula sketchybar
+# Patched SketchyBar build for the macOS 27.2 click bug (FelixKratz/SketchyBar#852).
+# Switch back to FelixKratz/formulae once the fix ships upstream.
+brew tap strayer/tap
+install_formula strayer/tap/sketchybar
 install_formula fastfetch
 install_formula starship
 install_formula nowplaying-cli

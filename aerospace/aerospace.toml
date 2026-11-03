@@ -63,7 +63,7 @@ run = 'layout floating'
 # Stop here so Zen windows never reach the force-tiling catch-all below.
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = 'layout --root tiles'
+run = 'layout --root h_tiles'
 
 # Arc extension pop-ups (e.g. iCloud Passwords) open as untitled windows.
 # Real browser windows always carry the active tab's title.
@@ -82,7 +82,7 @@ run = 'layout floating'
 # fullscreen button) instead of forcing them to tile.
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = 'layout --root tiles'
+run = 'layout --root h_tiles'
 
 # Dia extension pop-ups and settings open as untitled/auxiliary windows.
 # Real browser windows carry the active tab's title.
@@ -94,7 +94,7 @@ run = 'layout floating'
 # Other Dia windows: keep AeroSpace's dialog heuristic instead of forcing tiling.
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.dia'
-run = 'layout --root tiles'
+run = 'layout --root h_tiles'
 
 # Phi draws the Cmd+T "Search or Enter URL" omnibox as its own untitled window.
 # Real browser windows carry the profile name ("Default", "UPenn", ...).
@@ -118,7 +118,7 @@ run = 'layout floating'
 # Other Phi windows: keep AeroSpace's dialog heuristic instead of forcing tiling.
 [[on-window-detected]]
 if.app-id = 'com.phibrowser.Mac'
-run = 'layout --root tiles'
+run = 'layout --root h_tiles'
 
 # Aside draws its AI chat panel, mini popup, settings, extension pop-ups and PiP
 # as separate windows. Float those; only real browser windows tile.
@@ -130,7 +130,7 @@ run = 'layout floating'
 # Other Aside windows: keep AeroSpace's dialog heuristic instead of forcing tiling.
 [[on-window-detected]]
 if.app-id = 'at.studio.AsideBrowser'
-run = 'layout --root tiles'
+run = 'layout --root h_tiles'
 
 # Mail creates a short-lived "Untitled" helper window while searching. Keep only
 # that helper floating so it cannot split or reset the main Mail window's layout.
@@ -152,7 +152,7 @@ run = 'exec-and-forget /usr/bin/true'
 # Every other detected window is tiled, and its workspace cannot remain stacked.
 [[on-window-detected]]
 if = 'true'
-run = ['layout tiling', 'layout --root tiles']
+run = ['layout tiling', 'layout --root h_tiles']
 
 [mode.main.binding]
 cmd-left = 'echo -- 1 2 3 4 5 6 7 8 9 10 | workspace --stdin --wrap-around prev'

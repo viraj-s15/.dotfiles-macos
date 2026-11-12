@@ -248,7 +248,7 @@ case $@ in
 "Chromium" | "Google Chrome" | "Google Chrome Canary")
   icon_result=":google_chrome:"
   ;;
-"zoom.us")
+"zoom.us" | "Zoom")
   icon_result=":zoom:"
   ;;
 "MoneyMoney")

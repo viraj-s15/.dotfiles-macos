@@ -50,20 +50,17 @@ run = 'layout floating'
 if.app-id = 'com.apple.LocalAuthentication.UIAgent'
 run = 'layout floating'
 
-# Zen/Firefox draws its file picker as an in-process window with a BLANK title.
-# Explicitly keep these floating even if AeroSpace identifies them as normal windows.
+# Real Zen browser windows (including Cmd+N) start their title with an invisible
+# U+180E, e.g. "᠎GitHub". The file picker, passwords and extension pop-ups
+# and Picture-in-Picture don't, so everything else floats.
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-if.window-title-regex-substring = '^$'
-run = 'layout floating'
+if.window-title-regex-substring = "^᠎"
+run = ['layout tiling', 'layout --root h_tiles']
 
-# Preserve AeroSpace's automatic floating detection for Zen dialogs and extension
-# pop-ups. Normal browser windows still tile; only enforce the workspace layout,
-# not `layout tiling`, which would force detected dialogs back into the tile tree.
-# Stop here so Zen windows never reach the force-tiling catch-all below.
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = 'layout --root h_tiles'
+run = 'layout floating'
 
 # Arc extension pop-ups (e.g. iCloud Passwords) open as untitled windows.
 # Real browser windows always carry the active tab's title.
@@ -131,6 +128,17 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'at.studio.AsideBrowser'
 run = 'layout --root h_tiles'
+
+# Ardia titles every real browser window "Ardia", including Cmd+N windows, and
+# reports Settings as a standard window, so match on title and float the rest.
+[[on-window-detected]]
+if.app-id = 'com.ardia.browser'
+if.window-title-regex-substring = '^Ardia$'
+run = ['layout tiling', 'layout --root h_tiles']
+
+[[on-window-detected]]
+if.app-id = 'com.ardia.browser'
+run = 'layout floating'
 
 # Mail creates a short-lived "Untitled" helper window while searching. Keep only
 # that helper floating so it cannot split or reset the main Mail window's layout.
